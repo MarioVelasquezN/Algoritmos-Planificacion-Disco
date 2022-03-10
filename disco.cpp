@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
+#include <unistd.h>
 #include "disco.h"
 #include "algoritmoType.h"
 
@@ -41,7 +43,9 @@ void disco::insertarfifo(char datos[], int tiempo[], int l){
     for(int i = 0; i < (l); i++){
         cout << "inserte el tiempo en el proceso [" << datos[i] << "]: ";
         tiempo[i]=1+rand()%limite+1;
-        system("cls");
+        cout<<tiempo[i]<<endl;
+        sleep(1);
+        
     }
 }
 
@@ -55,16 +59,18 @@ void disco::fifof(char datos[],int tiempo[], int l){
         cout <<"\n""tiempo de retorno de["<<datos[j]<<"]: "<<tiempoTotal<<"\t";
     }
     tiempoReturn = tiempoReturn / l;
+    sleep(1);
     cout<<"\nEl tiempo de las entradas son: "<<tiempoReturn;
 }
 
 void disco::fifo(){
-    cout<<"\t\t\tSimulacion de FIFO en C++"<<endl;
+    while(true){
+    cout<<"\t\t\tSimulacion de FIFO"<<endl;
     cout<<"\t\t_______________________________________\n"<<endl;
     char datos[limite] = {'a','b','c','d','e'};
     int tiempo[limite];
     fifof(datos,tiempo,limite);
-    cin.get();
-    cin.get();
+    sleep(2);
+    }
 }
 
