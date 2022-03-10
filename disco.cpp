@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "disco.h"
 #include "algoritmoType.h"
 
@@ -25,7 +26,7 @@ void disco::createDisk(char name[30]){
         cin>>m.pistas;
 
         
-        strcpy_s(m.name,nombre);
+        strcpy(m.name,nombre);
         m.pistas;
         m.tam_pista;
         archivo.write(reinterpret_cast<const char*>(&m),sizeof(metadata));
@@ -36,9 +37,10 @@ void disco::createDisk(char name[30]){
 }
 
 void disco::insertarfifo(char datos[], int tiempo[], int l){
+    srand(time(NULL));
     for(int i = 0; i < (l); i++){
         cout << "inserte el tiempo en el proceso [" << datos[i] << "]: ";
-        cin >> tiempo[i];
+        tiempo[i]=1+rand()%limite+1;
         system("cls");
     }
 }
