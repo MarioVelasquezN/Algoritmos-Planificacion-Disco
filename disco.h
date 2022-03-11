@@ -50,8 +50,12 @@ class disco{
 	void fifof(char datos[],int tiempo[],int l);
 
 	void sstf();
+	void calculatediference(int request[],int head, int diff[][2],int n);
+	int findMin(int diff[][2],int n);
+	void shortestSeekTimeFirst(int request[],int head,int n);
+
 	void scan();
-	void scan2();
+	void scanf();
 };
 
 #endif // !DISCO_H

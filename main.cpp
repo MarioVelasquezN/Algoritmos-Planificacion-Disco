@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 #include "disco.h"
 
 int main () 
@@ -22,7 +23,12 @@ int main ()
         }else if(op==2){
             d.fifo();
         }else if(op==3){
-            
+           d.sstf(); 
+        }else if(op==4){
+            //d.scan();
+        }else{
+            cout<<"Saliendo con exito!!!"<<endl;
+            sleep(1);
         }
 
     }while(op!=5);

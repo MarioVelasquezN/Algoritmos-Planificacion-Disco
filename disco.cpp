@@ -74,3 +74,60 @@ void disco::fifo(){
     }
 }
 
+void disco::calculatediference(int request[],int head, int diff[][2],int n){
+    for (int i = 0; i < n; i++)
+    {
+        diff[i][0]=abs(head-request[i]);
+    }
+    
+}
+
+int disco::findMin(int diff[][2],int n){
+    int index=-1;
+    int minimo=1e9;
+
+    for (int i = 0; i < n; i++)
+    {
+        if(!diff[i][1] && minimo > diff[i][0]){
+            minimo=diff[i][0];
+            index=i;
+        }
+    }
+    return index;
+    
+}
+
+void disco::shortestSeekTimeFirst(int request[],int head,int n){
+    if(n==0){
+        return;
+    }
+
+    int diff[n][2]={{0,0}};
+    int seekcount=0;
+    int seeksequence[n+1]={0};
+
+    for (int i = 0; i < n; i++)
+    {
+        seeksequence[i]=head;
+        calculatediference(request,head,diff,n);
+        int index = findMin(diff,n);
+        diff[index][1]=1;
+        seekcount+=diff[index][0];
+        head=request[index];
+    }
+    seeksequence[n]=head;
+
+    cout<<"Total number of seek operations= "<<seekcount<<endl;
+    cout<<"Seek sequence is: "<<"\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout<<seeksequence[i]<<"\n";
+    }   
+}
+
+void disco::sstf(){
+    int n=8;
+    int proc[n]={123,54,67,78,98,43,54,41};
+    shortestSeekTimeFirst(proc,50,n);
+}
