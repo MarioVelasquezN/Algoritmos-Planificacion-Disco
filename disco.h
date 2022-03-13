@@ -55,7 +55,10 @@ class disco{
 	void shortestSeekTimeFirst(int request[],int head,int n);
 
 	void scan();
-	void scanf();
+	void scan(int arr[], int head, string direction);
+	
+	void cscan();
+	void cscan(int arr[],int head);
 };
 
 #endif // !DISCO_H
